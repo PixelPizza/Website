@@ -20,8 +20,9 @@ jobs:
         env:
           XDEBUG_MODE: coverage
         with:
-          version: 9.6.10
-          configuration: phpunit.xml.dist
+#          version: 9.6.10
+#          configuration: phpunit.xml.dist
+          vendored_phpunit_path: vendor/bin/phpunit
           php_extensions: xdebug
           coverage_clover: coverage/clover.xml
           coverage_html: coverage/report
