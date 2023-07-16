@@ -43,7 +43,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 class Order
 {
-	use TimestampableEntity;
+	use TimestampableEntity {
+		getCreatedAt as private traitGetCreatedAt;
+	}
 	
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
@@ -137,9 +139,10 @@ class Order
     }
 	
 	#[Groups(['order:read'])]
-	public function getOrderedAt(): \DateTime
+	#[SerializedName('orderedAt')]
+	public function getCreatedAt(): ?\DateTime
 	{
-	  return $this->createdAt;
+	  return $this->traitGetCreatedAt();
 	}
 
     public function getCookedAt(): ?\DateTimeImmutable
