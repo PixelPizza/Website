@@ -20,6 +20,7 @@ jobs:
         env:
           XDEBUG_MODE: coverage
         with:
+          version: 9.6.10
           configuration: phpunit.xml.dist
           php_extensions: xdebug
           coverage_clover: coverage/clover.xml
