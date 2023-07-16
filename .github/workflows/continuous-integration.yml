@@ -21,9 +21,9 @@ jobs:
       - name: Setup Symfony CLI
         run: |
           wget https://get.symfony.com/cli/installer -O - | bash
-      - name: Check Symfony Requirements
+      - name: Test Docker
         run: |
-          /home/runner/.symfony5/bin/symfony check:requirements
+          docker ps
       - name: Run Tests
         run: |
           /home/runner/.symfony5/bin/symfony php bin/phpunit
