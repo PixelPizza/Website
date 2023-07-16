@@ -1,0 +1,52 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Testing:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3
+      - name: Setup Composer and Dependencies
+        uses: php-actions/composer@v6
+      - name: Run Tests
+        uses: php-actions/phpunit@v3
+        env:
+          XDEBUG_MODE: coverage
+        with:
+          vendored_phpunit_path: vendor/bin/phpunit
+          php_extensions: xdebug
+          coverage_clover: coverage/clover.xml
+          coverage_html: coverage/report
+      - name: Store Code Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage/
+
+  Upload_Coverage_Report:
+    name: Upload coverage report to Codecov
+    needs: [Testing]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Download Coverage Report
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage
+          path: coverage/
+      - name: Codecov Upload
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: coverage/
+          fail_ci_if_error: true
