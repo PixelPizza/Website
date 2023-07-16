@@ -15,8 +15,13 @@ jobs:
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
       - name: Setup Composer and Dependencies
         uses: php-actions/composer@58260d1d3c7c1576becac3ac182175adf510e953 # v6
+      - name: Setup Symfony CLI
+        run: |
+          wget https://get.symfony.com/cli/installer -O - | bash
+#          export PATH="$HOME/.symfony/bin:$PATH"
       - name: Run Tests
-        run: symfony php bin/phpunit
+        run: |
+          symfony php bin/phpunit
         env:
             XDEBUG_MODE: coverage
 #      - name: Run Tests
