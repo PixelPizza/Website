@@ -15,7 +15,7 @@ class NumericStringIdGenerator extends AbstractIdGenerator
 	/**
 	 * @throws Exception
 	 */
-	public function generateId(EntityManagerInterface $em, $entity)
+	public function generateId(EntityManagerInterface $em, $entity): string
 	{
 		$entityName = $em->getClassMetadata(get_class($entity))->getName();
 		
