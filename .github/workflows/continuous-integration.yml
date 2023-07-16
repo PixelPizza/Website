@@ -16,13 +16,12 @@ jobs:
       - name: Setup Composer and Dependencies
         uses: php-actions/composer@58260d1d3c7c1576becac3ac182175adf510e953 # v6
       - name: Run Tests
-        uses: php-actions/phpunit@3a5951632654f875c3a2e3704199f3e63d8d4230 # v9
+        uses: php-actions/phpunit@v3
         env:
           XDEBUG_MODE: coverage
         with:
-#          version: 9.6.10
-#          configuration: phpunit.xml.dist
-          vendored_phpunit_path: vendor/bin/phpunit
+          version: 9.6.10
+          configuration: phpunit.xml.dist
           php_extensions: xdebug
           coverage_clover: coverage/clover.xml
           coverage_html: coverage/report
