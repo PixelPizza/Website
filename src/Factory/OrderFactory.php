@@ -45,11 +45,11 @@ final class OrderFactory extends ModelFactory
         return [
             'orderText' => self::faker()->words(5, true),
 	        'image' => self::faker()->imageUrl(),
-	        'customer' => strval(self::faker()->numerify(str_repeat('#', 20))),
-	        'guild' => strval(self::faker()->numerify(str_repeat('#', 20))),
-	        'channel' => strval(self::faker()->numerify(str_repeat('#', 20))),
-	        'chef' => strval(self::faker()->numerify(str_repeat('#', 20))),
-	        'deliverer' => strval(self::faker()->numerify(str_repeat('#', 20))),
+	        'customer' => self::faker()->numerify(str_repeat('#', 20)),
+	        'guild' => self::faker()->numerify(str_repeat('#', 20)),
+	        'channel' => self::faker()->numerify(str_repeat('#', 20)),
+	        'chef' => self::faker()->numerify(str_repeat('#', 20)),
+	        'deliverer' => self::faker()->numerify(str_repeat('#', 20)),
 	        'cookedAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeBetween('-1 week')),
 	        'deliveredAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeBetween('-1 week')),
         ];
