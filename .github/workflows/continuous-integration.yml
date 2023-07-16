@@ -20,7 +20,12 @@ jobs:
           docker compose up -d
       - name: Setup Symfony CLI
         run: |
-          wget https://get.symfony.com/cli/installer -O - | bash
+          brew install symfony-cli/tap/symfony-cli
+#        run: |
+#          wget https://get.symfony.com/cli/installer -O - | bash
+#      - name: Check Symfony Requirements
+#        run: |
+#          /home/runner/.symfony5/bin/symfony check:requirements
       - name: Run Tests
         run: |
           /home/runner/.symfony5/bin/symfony php bin/phpunit
