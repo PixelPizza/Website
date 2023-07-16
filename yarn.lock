@@ -2195,12 +2195,12 @@ __metadata:
 
 "@symfony/ux-react@file:vendor/symfony/ux-react/assets::locator=root-workspace-0b6124%40workspace%3A.":
   version: 1.0.0
-  resolution: "@symfony/ux-react@file:vendor/symfony/ux-react/assets#vendor/symfony/ux-react/assets::hash=ca16d5&locator=root-workspace-0b6124%40workspace%3A."
+  resolution: "@symfony/ux-react@file:vendor/symfony/ux-react/assets#vendor/symfony/ux-react/assets::hash=bef376&locator=root-workspace-0b6124%40workspace%3A."
   peerDependencies:
     "@hotwired/stimulus": ^3.0.0
     react: ^18.0
     react-dom: ^18.0
-  checksum: 17aec4860d3708fdc9138dc07c9c2728ddce001004c86225e4b37d2d7a227598f577fc9700326f2cda0cb3fb306e1c2e32eca519f4fdf51d9930cbe9c44f1ec5
+  checksum: 8558f9a48fbb2d86538052be3c57ddbdd385114c40e4025bcba64712532a2c5d1426218411af6bcfe9fbbaad8c3742fa7df4c26ebba79085b807bb4cb0f2b33f
   languageName: node
   linkType: hard
 
