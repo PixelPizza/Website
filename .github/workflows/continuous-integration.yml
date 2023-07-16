@@ -18,9 +18,7 @@ jobs:
       - name: Setup Symfony CLI
         run: |
           wget https://get.symfony.com/cli/installer -O - | bash
-      - name: Add Symfony CLI to $PATH
-        run: |
-          export PATH="$HOME/.symfony/bin:$PATH"
+          export PATH="$HOME/.symfony5/bin:$PATH"
       - name: Run Tests
         run: |
           symfony php bin/phpunit
