@@ -16,7 +16,7 @@ jobs:
       - name: Setup Composer and Dependencies
         uses: php-actions/composer@58260d1d3c7c1576becac3ac182175adf510e953 # v6
       - name: Run Tests
-        uses: php-actions/phpunit@v3
+        uses: php-actions/phpunit@8b81f7e713aba7ca15632bad78c56635ff327104 # v3
         env:
           XDEBUG_MODE: coverage
         with:
