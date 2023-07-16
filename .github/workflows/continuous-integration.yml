@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
-        uses: actions/checkout@v3
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
       - name: Setup Composer and Dependencies
-        uses: php-actions/composer@v6
+        uses: php-actions/composer@58260d1d3c7c1576becac3ac182175adf510e953 # v6
       - name: Run Tests
-        uses: php-actions/phpunit@v3
+        uses: php-actions/phpunit@8b81f7e713aba7ca15632bad78c56635ff327104 # v3
         env:
           XDEBUG_MODE: coverage
         with:
@@ -26,7 +26,7 @@ jobs:
           coverage_clover: coverage/clover.xml
           coverage_html: coverage/report
       - name: Store Code Coverage Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3
         with:
           name: coverage
           path: coverage/
@@ -37,16 +37,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
-        uses: actions/checkout@v3
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
         with:
           fetch-depth: 2
       - name: Download Coverage Report
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
         with:
           name: coverage
           path: coverage/
       - name: Codecov Upload
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: coverage/
