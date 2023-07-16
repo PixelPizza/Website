@@ -18,12 +18,10 @@ jobs:
       - name: Setup Docker
         run: |
           docker compose up -d
+          sleep 30
       - name: Setup Symfony CLI
         run: |
           wget https://get.symfony.com/cli/installer -O - | bash
-      - name: Test Docker
-        run: |
-          docker ps
       - name: Run Tests
         run: |
           /home/runner/.symfony5/bin/symfony php bin/phpunit
