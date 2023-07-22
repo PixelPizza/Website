@@ -8,23 +8,38 @@ on:
 
 jobs:
   Testing:
-    name: Unit Tests
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
       - name: Setup Composer and Dependencies
         uses: php-actions/composer@58260d1d3c7c1576becac3ac182175adf510e953 # v6
+      - name: Setup Docker
+        run: |
+          docker compose up -d
+          sleep 30
+      - name: Setup Symfony CLI
+        run: |
+          wget https://get.symfony.com/cli/installer -O - | bash
       - name: Run Tests
-        uses: php-actions/phpunit@8b81f7e713aba7ca15632bad78c56635ff327104 # v3
+        run: |
+          /home/runner/.symfony5/bin/symfony php bin/phpunit
         env:
-          XDEBUG_MODE: coverage
-        with:
-          version: 9.6.10
-          configuration: phpunit.xml.dist
-          php_extensions: xdebug
-          coverage_clover: coverage/clover.xml
-          coverage_html: coverage/report
+            XDEBUG_MODE: coverage
+      - name: Exit Docker
+        run: |
+          docker compose down
+#      - name: Run Tests
+#        uses: php-actions/phpunit@8b81f7e713aba7ca15632bad78c56635ff327104 # v3
+#        env:
+#          XDEBUG_MODE: coverage
+#        with:
+#          version: 9.6.10
+#          configuration: phpunit.xml.dist
+#          php_extensions: xdebug
+#          coverage_clover: coverage/clover.xml
+#          coverage_html: coverage/report
       - name: Store Code Coverage Report
         uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3
         with:
