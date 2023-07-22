@@ -40,6 +40,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 	denormalizationContext: [
 		'groups' => ['order:write']
 	],
+	extraProperties: [
+		'standard_put' => true,
+	],
 )]
 class Order
 {
